@@ -16,18 +16,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($locais as $locais)
+        @foreach($locais as $local)
         <tr>
-            <td>{{$locais->id}}</td>
-            <td>{{$locais->logradouro}}</td>
-            <td>{{$locais->numero}}</td>
-            <td>{{$locais->bairro}}</td>
-            <td>{{$locais->regiao}}</td>
+            <td>{{$local->id}}</td>
+            <td>{{$local->logradouro}}</td>
+            <td>{{$local->numero}}</td>
+            <td>{{$local->bairro}}</td>
+            <td>{{$local->regiao}}</td>
             <td>
-                <a href="{{ route('locais.edit',$locais->id)}}" class="btn btn-primary">Editar</a>
+                <a href="{{ route('locais.edit',$local->id)}}" class="btn btn-primary">Editar</a>
             </td>
             <td>
-                <form action="{{ route('locais.destroy', $locais->id)}}" method="post">
+                <form action="{{ route('locais.destroy', $local->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Deletar</button>
@@ -47,6 +47,22 @@
     </div>
   @endif
 </div>
+
+
+
+
+
+<div class="view overlay"style="position: relative; left: 200px; top: 50px;" >  
+    <img src="{{ asset('image/tnc.png') }}" class="img-fluid ">
+    <div class="mask flex-center rgba-grey-light" style="width:18%">
+        <p class="white-text" style="font-size: 13px;">
+        @foreach($locais->where('regiao', 'Sudeste') as $local)
+        {{$local->logradouro}} - {{$local->numero}} - {{$local->bairro}}  <br>
+        @endforeach
+        </p>
+    </div>
+</div>
+
 
 <div>
     <a style="margin: 19px;" href="{{ route('locais.create')}}" class="btn btn-primary">Novo Local</a>
