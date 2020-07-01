@@ -29,6 +29,7 @@ class LocaisController extends Controller
         return view('locais.create');
     }
 
+   
     /**
      * Store a newly created resource in storage.
      *
